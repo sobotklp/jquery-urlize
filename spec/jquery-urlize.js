@@ -9,25 +9,11 @@ var wrap = function($) {
     '\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|' + // or ipv4
     '\\[?[A-F0-9]*:[A-F0-9:]+\\]?)' + // or ipv6
     '(?::\\d+)?' +  // optional port
-    '(?:[/?]\\S+)?', 'ig');
+    '(?:[/?]?\\S+)?', 'gi');
 
   function urlize(s) {
-    matches = s.match(urlPattern);
-    if(matches) {
-      // uniqify matches
-      matches = matches.filter(function (e, i, matches) {
-        return matches.lastIndexOf(e) === i;
-      });
-
-      // replace matched text
-      for(i=0; i<matches.length; i++) {
-        matchText = matches[i];
-        escapedMatch = matchText.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
-        newText = '<a target="_blank" href="' + matchText + '">' + matchText + '</a>';
-        s = s.replace(new RegExp(escapedMatch, 'g'), newText);
-      }
-    }
-    return s;
+    return s.replace(urlPattern, function($1) {return '<a target="_blank" href="' + $1 + '">' + $1 + '</a>';});
+    // TODO: Recognize URLs that don't start with 'http(s)://'
   }
 
   $.fn.urlize = function(options) {

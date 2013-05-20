@@ -19,7 +19,7 @@ require(['jquery', 'jquery-urlize'], function($, sut) {
     });
 
     it('two links with substring', function() {
-//      expect($.fn.urlize('http://www.youtube.com/watch?v=QH2-TGUlwu4 is hosted on http://www.youtube.com/')).toEqual('<a target="blank" href="http://www.youtube.com/watch?v=QH2-TGUlwu4">http://www.youtube.com/watch?v=QH2-TGUlwu4</a> is hosted on <a target="_blank" href="http://www.youtube.com/">http://www.youtube.com/</a>');
+      expect($.fn.urlize('http://www.youtube.com/watch?v=QH2-TGUlwu4 is hosted on http://www.youtube.com/')).toEqual('<a target="_blank" href="http://www.youtube.com/watch?v=QH2-TGUlwu4">http://www.youtube.com/watch?v=QH2-TGUlwu4</a> is hosted on <a target="_blank" href="http://www.youtube.com/">http://www.youtube.com/</a>');
     });
   });
 });
