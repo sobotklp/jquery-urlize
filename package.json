@@ -1,0 +1,23 @@
+{
+    "name": "jquery-urlize"
+  , "description": "jQuery library to recognize and rewrite URLs as anchor tags"
+  , "version": "0.1.0"
+  , "homepage": "https://github.com/sobotklp/jquery-urlize"
+  , "author": "Lewis Sobotkiewicz <lewis.sobot@gmail.com>"
+  , "keywords": ["jquery", "urlize"]
+  , "license": "MIT"
+  , "main": "./jquery-urlize.js"
+  , "ender": "./src/jquery-urlize.js"
+  , "repository": {
+        "type": "git"
+      , "url": "https://github.com/sobotklp/jquery-urlize.git"
+    }
+  , "devDependencies": {
+      "smoosh": "0.4.0",
+      "jasmine-node": "latest",
+      "jquery": ">=1.7.6"
+    }
+  , "scripts": {
+      "test": "jasmine-node --runWithRequireJs --captureExceptions spec/"
+    }
+}
