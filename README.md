@@ -1,5 +1,6 @@
 jquery-urlize
 -------------
+[![Build Status](https://travis-ci.org/sobotklp/jquery-urlize.png?branch=master)](https://travis-ci.org/sobotklp/jquery-urlize)
 
 A jQuery library to recognize and rewrite URLs as clickable links
 
