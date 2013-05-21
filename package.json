@@ -18,6 +18,6 @@
       "jquery": ">=1.7.6"
     }
   , "scripts": {
-      "test": "jasmine-node --runWithRequireJs --captureExceptions spec/"
+      "test": "jasmine-node --verbose --runWithRequireJs --captureExceptions spec/"
     }
 }

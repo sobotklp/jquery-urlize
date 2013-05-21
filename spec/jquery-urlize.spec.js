@@ -1,3 +1,6 @@
+requirejs = require('requirejs');
+requirejs.config({baseUrl: __dirname + "/../src"});
+
 require(['jquery', 'jquery-urlize'], function($, sut) {
   describe("jquery-urlize test suite", function() {
 
