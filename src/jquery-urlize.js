@@ -12,8 +12,10 @@ var wrap = function($) {
     '(?:[/?]?\\S+)?', 'gi');
 
   function urlize(s) {
-    return s.replace(urlPattern, function($1) {return '<a target="_blank" href="' + $1 + '">' + $1 + '</a>';});
     // TODO: Recognize URLs that don't start with 'http(s)://'
+    return s.replace(urlPattern, function($1) {
+		return '<a target="_blank" href="' + $1 + '">' + $1 + '</a>';
+	});
   }
 
   $.fn.urlize = function(options) {
@@ -22,8 +24,7 @@ var wrap = function($) {
     }
     return this.each(function() {
        $this = $(this);
-       var text = $('<div/>').text($this.html()).html();  // Escape HTML
-       $this.html( urlize(text) );
+       $this.html( urlize($this.html()) );
     });
   };
 };

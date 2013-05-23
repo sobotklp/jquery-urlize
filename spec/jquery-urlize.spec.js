@@ -11,7 +11,7 @@ require(['jquery', 'jquery-urlize'], function($, sut) {
 
     it('simple strings', function() {
       expect( $('<p>Hello world</p>').urlize().html()).toEqual('Hello world');
-      expect( $('<p><a>Escape HTML</a></p>').urlize().html()).toEqual('&lt;a&gt;Escape HTML&lt;/a&gt;');
+      expect( $('<p><a>Don\'t Escape HTML</a></p>').urlize().html()).toEqual('<a>Don\'t Escape HTML</a>');
       expect( $('<p>http://jquery.com</p>').urlize().html()).toEqual('<a target="_blank" href="http://jquery.com">http://jquery.com</a>');
       expect( $('<p>Children love http://clubpenguin.com</p>').urlize().html()).toEqual('Children love <a target="_blank" href="http://clubpenguin.com">http://clubpenguin.com</a>');
       expect( $.fn.urlize('http://google.com > http://bing.com')).toEqual('<a target="_blank" href="http://google.com">http://google.com</a> > <a target="_blank" href="http://bing.com">http://bing.com</a>');
