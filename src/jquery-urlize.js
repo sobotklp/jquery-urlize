@@ -14,8 +14,8 @@ var wrap = function($) {
   function urlize(s) {
     // TODO: Recognize URLs that don't start with 'http(s)://'
     return s.replace(urlPattern, function($1) {
-		return '<a target="_blank" href="' + $1 + '">' + $1 + '</a>';
-	});
+      return '<a target="_blank" href="' + $1 + '">' + $1 + '</a>';
+    });
   }
 
   $.fn.urlize = function(options) {
