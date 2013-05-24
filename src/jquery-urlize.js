@@ -19,7 +19,7 @@ var wrap = function($) {
   }
 
   $.fn.urlize = function(options) {
-    if(typeof(options) === 'string') {
+    if(typeof options === 'string') {
       return urlize(options);
     }
     return this.each(function() {
