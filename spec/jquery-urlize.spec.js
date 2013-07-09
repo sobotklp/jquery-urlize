@@ -1,5 +1,5 @@
 requirejs = require('requirejs');
-requirejs.config({baseUrl: __dirname + "/../src"});
+requirejs.config({baseUrl: __dirname + "/../lib"});
 
 require(['jquery', 'jquery-urlize'], function($, sut) {
   describe("jquery-urlize test suite", function() {
@@ -14,7 +14,7 @@ require(['jquery', 'jquery-urlize'], function($, sut) {
       expect( $('<p><a>Don\'t Escape HTML</a></p>').urlize().html()).toEqual('<a>Don\'t Escape HTML</a>');
       expect( $('<p>http://jquery.com</p>').urlize().html()).toEqual('<a target="_blank" href="http://jquery.com">http://jquery.com</a>');
       expect( $('<p>Children love http://clubpenguin.com</p>').urlize().html()).toEqual('Children love <a target="_blank" href="http://clubpenguin.com">http://clubpenguin.com</a>');
-      expect( $.fn.urlize('http://google.com > http://bing.com')).toEqual('<a target="_blank" href="http://google.com">http://google.com</a> > <a target="_blank" href="http://bing.com">http://bing.com</a>');
+      expect( $.fn.urlize('https://google.com > http://bing.com')).toEqual('<a target="_blank" href="https://google.com">https://google.com</a> > <a target="_blank" href="http://bing.com">http://bing.com</a>');
     });
 
     it('two identical links', function() {
@@ -25,8 +25,11 @@ require(['jquery', 'jquery-urlize'], function($, sut) {
       expect($.fn.urlize('http://www.youtube.com/watch?v=QH2-TGUlwu4 is hosted on http://www.youtube.com/')).toEqual('<a target="_blank" href="http://www.youtube.com/watch?v=QH2-TGUlwu4">http://www.youtube.com/watch?v=QH2-TGUlwu4</a> is hosted on <a target="_blank" href="http://www.youtube.com/">http://www.youtube.com/</a>');
     });
 
-    it('URLs without http:// not supported', function() {
-      expect($.fn.urlize('failblog.org makes baby giggle')).toEqual('failblog.org makes baby giggle');
+    it('URLs without http:// supported', function() {
+      expect($.fn.urlize('docs.djangoproject.com/en/1.5/topics/db/models/')).toEqual('<a target="_blank" href="http://docs.djangoproject.com/en/1.5/topics/db/models/">docs.djangoproject.com/en/1.5/topics/db/models/</a>');
+      expect($.fn.urlize('www.failblog.org makes baby giggle')).toEqual('<a target="_blank" href="http://www.failblog.org">www.failblog.org</a> makes baby giggle');
+      expect($.fn.urlize('jquery.com > script.aculo.us')).toEqual('<a target="_blank" href="http://jquery.com">jquery.com</a> > <a target="_blank" href="http://script.aculo.us">script.aculo.us</a>');
+
     });
   });
 });

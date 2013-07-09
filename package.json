@@ -7,7 +7,7 @@
   , "keywords": ["jquery", "urlize"]
   , "license": "MIT"
   , "main": "./jquery-urlize.js"
-  , "ender": "./src/jquery-urlize.js"
+  , "ender": "./lib/jquery-urlize.js"
   , "repository": {
         "type": "git"
       , "url": "https://github.com/sobotklp/jquery-urlize.git"
