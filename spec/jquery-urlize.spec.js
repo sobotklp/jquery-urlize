@@ -25,11 +25,27 @@ require(['jquery', 'jquery-urlize'], function($, sut) {
       expect($.fn.urlize('http://www.youtube.com/watch?v=QH2-TGUlwu4 is hosted on http://www.youtube.com/')).toEqual('<a target="_blank" href="http://www.youtube.com/watch?v=QH2-TGUlwu4">http://www.youtube.com/watch?v=QH2-TGUlwu4</a> is hosted on <a target="_blank" href="http://www.youtube.com/">http://www.youtube.com/</a>');
     });
 
+    it('does not start at beginning of string', function() {
+      expect($.fn.urlize('     foo.com')).toEqual('     <a target="_blank" href="http://foo.com">foo.com</a>');
+    });
+
     it('URLs without http:// supported', function() {
       expect($.fn.urlize('docs.djangoproject.com/en/1.5/topics/db/models/')).toEqual('<a target="_blank" href="http://docs.djangoproject.com/en/1.5/topics/db/models/">docs.djangoproject.com/en/1.5/topics/db/models/</a>');
       expect($.fn.urlize('www.failblog.org makes baby giggle')).toEqual('<a target="_blank" href="http://www.failblog.org">www.failblog.org</a> makes baby giggle');
       expect($.fn.urlize('jquery.com > script.aculo.us')).toEqual('<a target="_blank" href="http://jquery.com">jquery.com</a> > <a target="_blank" href="http://script.aculo.us">script.aculo.us</a>');
 
+    });
+
+    it('URLs with invalid TLDs not supported', function() {
+      expect($.fn.urlize('test.lol')).toEqual('test.lol');
+    });
+
+    it('Invalid URLs not supported', function() {
+      expect($.fn.urlize(':D')).toEqual(':D');
+    });
+
+    xit('Email addresses not supported', function() {
+      expect($.fn.urlize('lewis@gmail.com')).toEqual('lewis@gmail.com');
     });
   });
 });
