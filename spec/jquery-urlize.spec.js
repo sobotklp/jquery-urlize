@@ -33,11 +33,13 @@ require(['jquery', 'jquery-urlize'], function($, sut) {
       expect($.fn.urlize('docs.djangoproject.com/en/1.5/topics/db/models/')).toEqual('<a target="_blank" href="http://docs.djangoproject.com/en/1.5/topics/db/models/">docs.djangoproject.com/en/1.5/topics/db/models/</a>');
       expect($.fn.urlize('www.failblog.org makes baby giggle')).toEqual('<a target="_blank" href="http://www.failblog.org">www.failblog.org</a> makes baby giggle');
       expect($.fn.urlize('jquery.com > script.aculo.us')).toEqual('<a target="_blank" href="http://jquery.com">jquery.com</a> > <a target="_blank" href="http://script.aculo.us">script.aculo.us</a>');
+      expect($.fn.urlize('iheart.bo')).toEqual('<a target="_blank" href="http://iheart.bo">iheart.bo</a>');
 
     });
 
     it('URLs with invalid TLDs not supported', function() {
       expect($.fn.urlize('test.lol')).toEqual('test.lol');
+      expect($.fn.urlize('iheart.boobies')).toEqual('iheart.boobies');
     });
 
     it('Invalid URLs not supported', function() {
